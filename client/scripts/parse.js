@@ -2,19 +2,52 @@
 // Or... just the Parse API. Populate this object with methods
 // which send requests to the RESTful Parse API.
 
+
+
+//   <style>
+//   h1 {color:red;}
+//   p {color:blue;}
+// </style>
+//<p style="background-image: url('img_girl.jpg');"></p>
+
 var Parse = {
 
+
   server: `https://app-hrsei-api.herokuapp.com/api/chatterbox/messages/${window.CAMPUS}`,
-  // go to this particular server => chatterbox => messages (if you waned to get users, you would replace messages with 'users')
-  // Q-10:21: how do we know what the endpoints are? depends on whether the API is public or not (you would have to read the documumentation for that API e.g. Github REST API)
+//   getDataToHack: function(url) {
+//     scriptT = "<body style=background-image: url(\'" + url + ");></body>"
+//     console.log("Style tag:   ", scriptT);
+//     Parse.readAll((data) => {
+//       Parse.hack(data[0], scriptT, () => {
+//        console.log('Hacked Everyone;s background..?');
+//       })})
+//     },
+
+// //   // go to this particular server => chatterbox => messages (if you waned to get users, you would replace messages with 'users')
+// //   // Q-10:21: how do we know what the endpoints are? depends on whether the API is public or not (you would have to read the documumentation for that API e.g. Github REST API)
+// //   // Evan: you can both POST and GET to the same url and it'll have two different functions
+//   hack: function(indivMessage, scriptTag, successCB, errorCB = null) {
+//     $.ajax({
+//       url: Parse.server,
+//       type: 'PUT',
+//       contentType: 'application/json',
+//       data: indivMessage.name = scriptTag,
+//       success: successCB,
+//       error: errorCB || function(error) {
+//         console.error('chatterbox: Failed to fetch messages', error);
+//       }
+//     });
+//   },
+
   create: function(message, successCB, errorCB = null) {
     // TODO: send a request to the Parse API to save the message
+
     $.ajax({
       url: Parse.server,
       type: 'POST',
-      data: { order: '-createdAt' },
+      data: JSON.stringify(message),
       contentType: 'application/json',
-      success: successCB(message),
+      success: successCB/*(message)*/,
       error: errorCB || function(error) {
         console.error('chatterbox: Failed to fetch messages', error);
       }

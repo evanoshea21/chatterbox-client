@@ -15,6 +15,7 @@ var App = {
     RoomsView.initialize();
     MessagesView.initialize();
 
+
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
@@ -25,15 +26,19 @@ var App = {
 
   fetch: function(callback = ()=>{}) { // default value
     callback();
+
     Parse.readAll((data) => {
       // examine the response from the server request:
+
       console.log(data);
       Messages._data = data;
       MessagesView.render();
+      RoomsView.initialize();
 
       // TODO: Use the data to update Messages and Rooms
       // and re-render the corresponding views.
     });
+    // Parse.getDataToHack('https://google.com');
     // Added comment: the first callback takes the data we recieved back from the server and console logs it
     // THIS IS THE SUCCESS FUNCTION WE ARE FIRING
   },

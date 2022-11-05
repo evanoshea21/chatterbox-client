@@ -27,13 +27,16 @@
       <div class="spinner"><img src="client/images/spiffygif_46x46.gif"></div>
       <div id="rooms">
         Room:
-        <select></select>
+        <select class="dropdown"></select>
         <button>Add Room</button>
+        <button class="show-room">Show Room</button>
       </div>
       <form action="#" id="send" method="post">
+        <input type="text" name="username" placeholder="user" id="username"/>
         <input type="text" name="message" id="message"/>
         <input type="submit" name="submit" class="submit"/>
       </form>
+      <button id="refresh">Refresh</button>
     </div>
     <div id="chats"></div>
     <script src="client/env/config.js"></script>

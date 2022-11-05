@@ -16,6 +16,7 @@ var MessagesView = {
     // Messages._data.forEach(function(item) {
     //   this.renderMessage(item);
     // })
+    this.$chats.empty();
     for (var i = 0; i < Messages._data.length; i++) {
       this.renderMessage(Messages._data[i]);
     }
@@ -24,7 +25,9 @@ var MessagesView = {
   renderMessage: function(message) {
     // TODO: Render a single message.
     var htmlStr = MessageView.render(message);
-    this.$chats.prepend(htmlStr);
+    if (message.text !== null && message.user !== null) {
+      this.$chats.append(htmlStr);
+    }
   },
 
   handleClick: function(event) {
