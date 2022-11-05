@@ -22,7 +22,7 @@ var MessagesView = {
     }
   },
 
-  renderMessage: function(message) {
+  renderMessage: function(message) { //
     // TODO: Render a single message.
     var htmlStr = MessageView.render(message);
     if (message.text !== null && message.user !== null) {
