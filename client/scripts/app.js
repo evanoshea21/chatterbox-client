@@ -23,14 +23,19 @@ var App = {
     // continually, instead of just once at the start.
   },
 
-  fetch: function(callback = ()=>{}) {
+  fetch: function(callback = ()=>{}) { // default value
+    callback();
     Parse.readAll((data) => {
       // examine the response from the server request:
       console.log(data);
+      Messages._data = data;
+      MessagesView.render();
 
       // TODO: Use the data to update Messages and Rooms
       // and re-render the corresponding views.
     });
+    // Added comment: the first callback takes the data we recieved back from the server and console logs it
+    // THIS IS THE SUCCESS FUNCTION WE ARE FIRING
   },
 
   startSpinner: function() {
